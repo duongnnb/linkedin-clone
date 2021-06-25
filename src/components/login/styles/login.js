@@ -1,38 +1,10 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
-const Login = () => {
-  return (
-    <Container>
-      <Nav>
-        <a href="/">
-          <img src="/images/login-logo.svg" alt="Login" />
-        </a>
-        <div>
-          <Join>Join now</Join>
-          <SignIn>Sign in</SignIn>
-        </div>
-      </Nav>
-      <Section>
-        <Hero>
-          <h1>Welcome to your professional community</h1>
-          <img src="/images/login-hero.svg" alt="" />
-        </Hero>
-        <Form>
-          <Google>
-            <img src="/images/google.svg" alt="" />
-            Sign in with Google
-          </Google>
-        </Form>
-      </Section>
-    </Container>
-  );
-};
-
-const Container = styled.div`
+export const Container = styled.div`
   padding: 0px;
 `;
 
-const Nav = styled.nav`
+export const Nav = styled.nav`
   max-width: 1128px;
   margin: auto;
   padding: 12px 0 16px;
@@ -51,7 +23,7 @@ const Nav = styled.nav`
   }
 `;
 
-const Join = styled.a`
+export const Join = styled.a`
   font-size: 16px;
   padding: 10px 12px;
   text-decoration: none;
@@ -65,7 +37,7 @@ const Join = styled.a`
   }
 `;
 
-const SignIn = styled.a`
+export const SignIn = styled.a`
   box-shadow: inset 0 0 0 1px #0a66c2;
   color: #0a66c2;
   border-radius: 24px;
@@ -83,7 +55,7 @@ const SignIn = styled.a`
   }
 `;
 
-const Section = styled.section`
+export const Section = styled.section`
   display: flex;
   align-content: start;
   min-height: 700px;
@@ -103,7 +75,7 @@ const Section = styled.section`
   }
 `;
 
-const Hero = styled.div`
+export const Hero = styled.div`
   width: 100%;
 
   h1 {
@@ -137,7 +109,7 @@ const Hero = styled.div`
   }
 `;
 
-const Form = styled.div`
+export const Form = styled.div`
   margin-top: 100px;
   width: 408px;
   @media (max-width: 768px) {
@@ -145,7 +117,7 @@ const Form = styled.div`
   }
 `;
 
-const Google = styled.button`
+export const Google = styled.button`
   display: flex;
   justify-content: center;
   background-color: #fff;
@@ -165,5 +137,3 @@ const Google = styled.button`
     color: rgba(0, 0, 0, 0.75);
   }
 `;
-
-export default Login;
