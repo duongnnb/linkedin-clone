@@ -1,4 +1,4 @@
-import { Container, Content, Section, Layout } from './styles/home';
+import { Container, Section, Layout } from './styles/home';
 import LeftSide from './left-side';
 import RightSide from './right-side';
 import Main from './main';
