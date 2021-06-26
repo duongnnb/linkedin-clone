@@ -1,4 +1,13 @@
-import { Container, ShareBox } from './styles/main';
+import {
+  Container,
+  ShareBox,
+  Article,
+  ShareActor,
+  Description,
+  SharedImg,
+  SocialCounts,
+  SocialActions,
+} from './styles/main';
 
 const Main = () => {
   return (
@@ -30,6 +39,60 @@ const Main = () => {
           </button>
         </div>
       </ShareBox>
+      <div>
+        <Article>
+          <ShareActor>
+            <a>
+              <img src="/images/user.svg" alt="" />
+              <div>
+                <span>Title</span>
+                <span>Info</span>
+                <span>Date</span>
+              </div>
+            </a>
+            <button>
+              <img src="/images/ellipsis.svg" alt="" />
+            </button>
+          </ShareActor>
+
+          <Description>Description</Description>
+          <SharedImg>
+            <a>
+              <img src="/images/thanos-shared.jpeg" alt="" />
+            </a>
+          </SharedImg>
+          <SocialCounts>
+            <li>
+              <button>
+                <img src="https://static-exp1.licdn.com/sc/h/d310t2g24pvdy4pt1jkedo4yb" alt="" />
+                <img src="https://static-exp1.licdn.com/sc/h/5thsbmikm6a8uov24ygwd914f" alt="" />
+                <span>75</span>
+              </button>
+            </li>
+            <li>
+              <a>2 comments</a>
+            </li>
+          </SocialCounts>
+          <SocialActions>
+            <button>
+              <img src="/images/like-icon.svg" alt="" />
+              <span>Like</span>
+            </button>
+            <button>
+              <img src="/images/comments-icon.svg" alt="" />
+              <span>Comments</span>
+            </button>
+            <button>
+              <img src="/images/share-icon.svg" alt="" />
+              <span>Share</span>
+            </button>
+            <button>
+              <img src="/images/send-icon.svg" alt="" />
+              <span>Send</span>
+            </button>
+          </SocialActions>
+        </Article>
+      </div>
     </Container>
   );
 };
