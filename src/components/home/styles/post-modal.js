@@ -116,10 +116,11 @@ export const PostButton = styled.button`
   min-width: 60px;
   border-radius: 20px;
   padding-left: 16px;
-  background: #0a66c2;
-  color: white;
+  padding-right: 16px;
+  background: ${(props) => (props.disabled ? 'rgba(0,0,0,0.8)' : '#0a66c2')};
+  color: ${(props) => (props.disabled ? 'rgba(1,1,1,0.2)' : 'white')};
   &:hover {
-    background: #004182;
+    background: ${(props) => (props.disabled ? 'rgba(0,0,0,0.08)' : '#004182')};
   }
 `;
 
@@ -136,5 +137,12 @@ export const Editor = styled.div`
     height: 35px;
     font-size: 16px;
     margin-bottom: 20px;
+  }
+`;
+
+export const UploadImage = styled.div`
+  text-align: center;
+  img {
+    width: 100%;
   }
 `;
