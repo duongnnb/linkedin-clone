@@ -10,8 +10,9 @@ import {
   Item,
   CommunityCard,
 } from './styles/left-side';
+import { connect } from 'react-redux';
 
-const LeftSide = () => {
+const LeftSide = (props) => {
   return (
     <Container>
       <ArtCard>
@@ -19,7 +20,7 @@ const LeftSide = () => {
           <CardBackground />
           <a>
             <Photo />
-            <Link>Welcome, there!</Link>
+            <Link>Welcome, {props.user ? props.user.displayName : ''}!</Link>
           </a>
           <a>
             <AddPhotoText>Add a Photo</AddPhotoText>
@@ -63,4 +64,10 @@ const LeftSide = () => {
   );
 };
 
-export default LeftSide;
+const mapStateToProps = (state) => {
+  return {
+    user: state.userState.user,
+  };
+};
+
+export default connect(mapStateToProps)(LeftSide);
