@@ -201,3 +201,10 @@ export const SocialActions = styled.div`
     }
   }
 `;
+
+export const Content = styled.div`
+  text-align: center;
+  & > img {
+    width: 30px;
+  }
+`;

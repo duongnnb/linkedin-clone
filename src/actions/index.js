@@ -1,10 +1,15 @@
 import { auth, provider, storage } from '../lib/firebase';
 import db from '../lib/firebase';
-import { SET_USER } from './actionType';
+import { SET_USER, SET_LOADING_STATUS } from './actionType';
 
 export const setUser = (payload) => ({
   type: SET_USER,
   user: payload,
+});
+
+export const setLoading = (status) => ({
+  type: SET_LOADING_STATUS,
+  status: status,
 });
 
 export function signInAPI() {
@@ -46,6 +51,8 @@ export function signOutAPI() {
 
 export function postArticle(payload) {
   return (dispatch) => {
+    dispatch(setLoading(true));
+
     if (payload.image !== '') {
       const upload = storage.ref(`images/${payload.image.name}`).put(payload.image);
       upload.on(
@@ -73,8 +80,23 @@ export function postArticle(payload) {
             comments: 0,
             description: payload.description,
           });
+
+          dispatch(setLoading(false));
         }
       );
+    } else if (payload.video) {
+      db.collection('article').add({
+        actor: {
+          description: payload.user.email,
+          title: payload.user.displayName,
+          date: payload.timestamp,
+          image: payload.user.photoURL,
+        },
+        video: payload.video,
+        sharedImg: '',
+        comments: 0,
+        description: payload.description,
+      });
     }
   };
 }

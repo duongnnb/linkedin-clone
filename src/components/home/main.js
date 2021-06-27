@@ -7,11 +7,13 @@ import {
   SharedImg,
   SocialCounts,
   SocialActions,
+  Content,
 } from './styles/main';
 import PostModal from './post-modal';
 import { useState } from 'react';
+import { connect } from 'react-redux';
 
-const Main = () => {
+const Main = (props) => {
   const [showModal, setShowModal] = useState('close');
 
   const handleClick = (e) => {
@@ -36,8 +38,14 @@ const Main = () => {
     <Container>
       <ShareBox>
         <div>
-          <img src="/images/user.svg" alt="" />
-          <button onClick={handleClick}>Start a post</button>
+          {props.user && props.user.photoURL ? (
+            <img src={props.user.photoURL} alt="" />
+          ) : (
+            <img src="/images/user.svg" alt="" />
+          )}
+          <button onClick={handleClick} disabled={props.loading ? true : false}>
+            Start a post
+          </button>
         </div>
         <div>
           <button>
@@ -61,7 +69,9 @@ const Main = () => {
           </button>
         </div>
       </ShareBox>
-      <div>
+      <Content>
+        {props.loading && <img src="/images/spin-loader.svg" alt="" />}
+
         <Article>
           <ShareActor>
             <a>
@@ -114,10 +124,19 @@ const Main = () => {
             </button>
           </SocialActions>
         </Article>
-      </div>
+      </Content>
       <PostModal showModal={showModal} handleClick={handleClick} />
     </Container>
   );
 };
 
-export default Main;
+const mapStateToProps = (state) => {
+  return {
+    loading: state.articleState.loading,
+    user: state.userState.user,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
