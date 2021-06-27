@@ -124,11 +124,11 @@ const Main = (props) => {
                           src="https://static-exp1.licdn.com/sc/h/5thsbmikm6a8uov24ygwd914f"
                           alt=""
                         />
-                        <span>75</span>
+                        <span>10</span>
                       </button>
                     </li>
                     <li>
-                      <a>{article.comments} comments</a>
+                      <span>{article.comments} comments</span>
                     </li>
                   </SocialCounts>
                   <SocialActions>
