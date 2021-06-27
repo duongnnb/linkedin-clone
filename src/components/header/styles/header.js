@@ -134,7 +134,7 @@ export const NavList = styled.li`
 
 export const SignOut = styled.div`
   position: absolute;
-  top: 45px;
+  /* top: 45px; */
   background: white;
   border-radius: 0 0 5px 5px;
   width: 100px;
@@ -143,6 +143,12 @@ export const SignOut = styled.div`
   transition-duration: 167ms;
   text-align: center;
   display: none;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    bottom: 40px;
+    background: #f3f3f3;
+  }
 `;
 
 export const User = styled(NavList)`

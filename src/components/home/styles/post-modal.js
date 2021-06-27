@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 export const Container = styled.div`
   position: fixed;
@@ -42,6 +42,9 @@ export const Header = styled.div`
     width: 40px;
     min-width: auto;
     color: rgba(0, 0, 0, 0.15);
+    border: none;
+    background: transparent;
+    cursor: pointer;
     svg,
     img {
       pointer-events: none;
@@ -90,6 +93,9 @@ export const AssetButton = styled.button`
   height: 40px;
   min-width: auto;
   color: rgba(0, 0, 0, 0.5);
+  border: none;
+  background: transparent;
+  cursor: pointer;
 `;
 
 export const AttachAssets = styled.div`
@@ -118,9 +124,10 @@ export const PostButton = styled.button`
   padding-left: 16px;
   padding-right: 16px;
   background: ${(props) => (props.disabled ? 'rgba(0,0,0,0.8)' : '#0a66c2')};
-  color: ${(props) => (props.disabled ? 'rgba(1,1,1,0.2)' : 'white')};
+  color: white;
   &:hover {
     background: ${(props) => (props.disabled ? 'rgba(0,0,0,0.08)' : '#004182')};
+    color: ${(props) => (props.disabled ? 'rgba(1,1,1,0.2)' : 'white')};
   }
 `;
 
@@ -130,6 +137,8 @@ export const Editor = styled.div`
     width: 100%;
     min-height: 100px;
     resize: none;
+    border: none;
+    outline: none;
   }
 
   input {

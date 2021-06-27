@@ -13,6 +13,12 @@ export const CommonCard = styled.div`
   position: relative;
   border: none;
   box-shadow: 0 0 0 1px rgb(0 0 0 /15%), 0 0 0 rgb(0 0 0 /20%);
+
+  div {
+    button {
+      cursor: pointer;
+    }
+  }
 `;
 
 export const ShareBox = styled(CommonCard)`

@@ -1,6 +1,6 @@
 import { auth, provider, storage } from '../lib/firebase';
 import db from '../lib/firebase';
-import { SET_USER, SET_LOADING_STATUS } from './actionType';
+import { SET_USER, SET_LOADING_STATUS, GET_ARTICLES } from './actionType';
 
 export const setUser = (payload) => ({
   type: SET_USER,
@@ -10,6 +10,11 @@ export const setUser = (payload) => ({
 export const setLoading = (status) => ({
   type: SET_LOADING_STATUS,
   status: status,
+});
+
+export const getArticles = (payload) => ({
+  type: GET_ARTICLES,
+  payload: payload,
 });
 
 export function signInAPI() {
@@ -52,6 +57,7 @@ export function signOutAPI() {
 export function postArticle(payload) {
   return (dispatch) => {
     dispatch(setLoading(true));
+    console.log('payload', payload);
 
     if (payload.image !== '') {
       const upload = storage.ref(`images/${payload.image.name}`).put(payload.image);
@@ -68,7 +74,7 @@ export function postArticle(payload) {
         (error) => console.log(error.code),
         async () => {
           const downloadURL = await upload.snapshot.ref.getDownloadURL();
-          db.collection('article').add({
+          db.collection('articles').add({
             actor: {
               description: payload.user.email,
               title: payload.user.displayName,
@@ -84,19 +90,33 @@ export function postArticle(payload) {
           dispatch(setLoading(false));
         }
       );
-    } else if (payload.video) {
-      db.collection('article').add({
+    } else {
+      db.collection('articles').add({
         actor: {
           description: payload.user.email,
           title: payload.user.displayName,
           date: payload.timestamp,
           image: payload.user.photoURL,
         },
-        video: payload.video,
+        video: payload.vide || '',
         sharedImg: '',
         comments: 0,
         description: payload.description,
       });
+
+      dispatch(setLoading(false));
     }
+  };
+}
+
+export function getArticlesAPI() {
+  return (dispatch) => {
+    let payload;
+    db.collection('articles')
+      .orderBy('actor.date', 'desc')
+      .onSnapshot((snapshot) => {
+        payload = snapshot.docs.map((doc) => doc.data());
+        dispatch(getArticles(payload));
+      });
   };
 }
