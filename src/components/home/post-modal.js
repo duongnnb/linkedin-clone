@@ -108,7 +108,7 @@ const PostModal = (props) => {
                     <p>
                       <label htmlFor="file">Select an image to share</label>
                     </p>
-                    {shareImage && <img src={URL.createObjectURL(shareImage)} />}
+                    {shareImage && <img src={URL.createObjectURL(shareImage)} alt="" />}
                   </UploadImage>
                 ) : (
                   assetArea === 'media' && (

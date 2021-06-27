@@ -17,11 +17,12 @@ import { useEffect } from 'react';
 import ReactPlayer from 'react-player';
 
 const Main = (props) => {
+  const { getArticles } = props;
   const [showModal, setShowModal] = useState('close');
 
   useEffect(() => {
-    props.getArticles();
-  }, []);
+    getArticles();
+  }, [getArticles]);
 
   console.log(props.articles);
 
